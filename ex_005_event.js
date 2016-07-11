@@ -1,5 +1,6 @@
 /**
  * Created by YB on 2016-07-09.
+ *
  */
 var webdriver = require('selenium-webdriver'),
     By = require('selenium-webdriver').By,

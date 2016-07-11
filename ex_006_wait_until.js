@@ -23,19 +23,24 @@
 
  * http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/until.html
  */
-
 var webdriver = require('selenium-webdriver'),
     By = require('selenium-webdriver').By,
     until = require('selenium-webdriver').until;
+
 
 var driver = new webdriver.Builder()
     .forBrowser('chrome')
     .build();
 
-driver.get('http://www.google.com/ncr');
-driver.findElement(By.name('q')).sendKeys('webdriver');
-driver.findElement(By.name('btnG')).click();
-driver.wait(until.titleIs('webdriver - Google Search'), 1000).then(()=>console.log('검색성공'));
-// driver.quit();
+// url 설정
+driver.get('http://www.naver.com/');
 
+// By를 통한 Dom 접근
+driver.findElement(By.css('#query')).sendKeys('설현');
+driver.findElement(By.css('#search_btn')).click();
 
+// 특정 요소가 존재할때까지 기다리다가 존재하는 경우에 실행
+// 제한시간내에 존재하지 않는 경우는 throw exception
+// return 되는 요소는 WebElement
+const timeLimit = 5000;
+driver.wait(until.elementLocated(By.css('.lnb2')), timeLimit).then((webElement)=>webElement.click());
