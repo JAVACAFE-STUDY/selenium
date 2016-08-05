@@ -39,10 +39,10 @@ logoDiv.getText().then((txt)=>console.log('# getText() = ', txt));   // 글자�
 // wait에 넘길 인자를 재정의하여 원하는 조건이 충족될 때까지 기다리기
 var footerSpan = driver.findElement(By.css('#fsl'));
 driver.wait(function() {
-   return footerSpan.getText().then(function(text){
-       console.log('# text = ', text);  // 해당하는 값이 없는 경우 해당 로그가 일정 시간마다 계속 찍히는걸 확인할 수 있다.
-       return text.indexOf('비즈니스') > -1;
-   })
+    return footerSpan.getText().then(function (text) {
+        console.log('# text = ', text);  // 해당하는 값이 없는 경우 해당 로그가 일정 시간마다 계속 찍히는걸 확인할 수 있다.
+        return text.indexOf('비즈니스') > -1;
+    });
 }).then(function () {
     console.log('원하는 정보가 있는지 확인됨');
     footerSpan.findElements(By.css('a')).then(function (eles) {
